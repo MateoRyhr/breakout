@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Breakout</title>
+    <link rel="stylesheet" href="css/brakout.css">
+  </head>
+  <body>
+    <div id="menu" class="menu">
+      <h1>Breakout</h1>
+      <form>
+        <p>Sound</p>
+        <label for="sound">ON</label><input  type="radio" id="soundON" name="sound" value="on">
+        <label for="sound">OFF</label><input type="radio" id="sound" name="sound" value="off" checked>
+        <input type="button" id="play" value="PLAY">
+      </form>
+    </div>
+    <div class="breakout" id="breakout">
+      <canvas id="canvas" style="border:2px solid black" width="400" height="600"></canvas>
+      <h2>Score: <span id="score">0</span></h2>
+      </div>
+    <script src="breakout.js" charset="utf-8"></script>
+  </body>
+</html>

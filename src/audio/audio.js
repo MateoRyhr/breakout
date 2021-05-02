@@ -6,7 +6,6 @@ export default class Audio{
     this.music.volume = 0.05
     this.bounceSrc = '../../assets/sounds/bounce.mp3'
     this.breakSrc = '../../assets/sounds/break.mp3'
-
   }
 
   musicMuteUnmute(sound){

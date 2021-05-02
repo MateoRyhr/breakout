@@ -24,20 +24,23 @@ class GameObject {
         if (bounce) {
           //add force of blockPlayer
           if (this.velx < maxVel && this.velx > -maxVel) {
-            if (obj.velx < 0)
+            if (obj.velx < 0){
               this.velx -= maxVel/4;
-            if (obj.velx > 0)
+            }
+            if (obj.velx > 0){
               this.velx += maxVel/4;
-            //add small random force in x
-            if (parseInt(Math.random() * 2) === 1)//50% de probabilida de agregar velx aleatoria
-              this.velx -= Math.floor(Math.random() * maxVel/4);
-            else
-              this.velx += Math.floor(Math.random() * maxVel/4);
-            //in y - the letiations forces in 'y' are not good for the game
-            //if(parseInt(Math.random()*2+1)==1) this.vely-=Math.random();
-            //else this.vely+=Math.random();
-          }
+            }
 
+            //random vel add in x on bounce
+            let randomNum = Math.floor(Math.random() * 2)
+            if(randomNum === 1){
+              this.velx -= maxVel/8;
+              console.log(this.velx)
+            }else{
+              this.velx += maxVel/8;
+              console.log(this.velx)
+            }
+          }
           //bounces
           //sistema por comparación de distancias
           if (up <= right && up <= down && up <= left)

@@ -38,9 +38,9 @@ export default class Ui{
 
     setSound(sound){
         if(sound){
-            this.soundIcon.setAttribute('src','../../assets/icons/volume-up-white.svg')
+            this.soundIcon.style.backgroundImage = 'url(../../assets/icons/volume-up-white.svg)'
         }else{
-            this.soundIcon.setAttribute('src','../../assets/icons/volume-mute-white.svg')
+            this.soundIcon.style.backgroundImage = 'url(../../assets/icons/volume-mute-white.svg)'
         }
     }
 

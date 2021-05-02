@@ -29,7 +29,7 @@ export default class Player{
     }
 
     touchStart(e){
-        let key = e.path[1].id
+        let key = e.path[0].id
         let v = this.blockPlayer.velx
         switch(key){
             case 'left-arrow':
@@ -62,7 +62,7 @@ export default class Player{
     }
 
     touchEnd(e){
-        let key = e.path[1].id
+        let key = e.path[0].id
         let v = this.blockPlayer.velx
         switch(key){
             case 'left-arrow':

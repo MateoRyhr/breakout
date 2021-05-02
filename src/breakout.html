@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Breakout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/reset.css"> 
+    <link rel="stylesheet" href="./styles/breakout.css">
+    <script defer type='module' src="./engine/gameManager.js"></script>
+  </head>
+  <body>
+    <section class="playMenu-settings">
+      <p class="playMenu-settings_scoreText">Score: <span id="score" class="playMenu_score">0</span></p>
+      <figure  class="playMenu-settings_sound-icon"><img id="soundIcon" src="../assets/icons/volume-up-white.svg"/></figure>
+    </section>
+
+    <section id="menu" class="menu">
+      <h1 class="menu_title">Breakout</h1>
+      <h2 class="menu_play" id="play">PLAY</h2>
+    </section>
+
+    <canvas class="canvas" id="canvas"></canvas>
+
+    <section id='tactilControls' class="playMenu-tactil-controls">
+      <figure id="left-arrow" class="playMenu-tactil-controls_button"><img src="../assets/icons/left-arrow-white.svg" alt="Left arrow"></figure>
+      <figure id="up-arrow" class="playMenu-tactil-controls_button"><img src="../assets/icons/up-arrow-white.svg" alt="Up arrow"></figure>
+      <figure id="right-arrow" class="playMenu-tactil-controls_button"><img src="../assets/icons/right-arrow-white.svg" alt="Right arrow"></figure>
+    </section>
+
+
+    <section id="submenu" class="submenu">
+      <section id="nextLevelMenu" class="submenu_next-level">
+        <p class="next-level_title">You win!</p>
+        <p id="nextLevelButton" class="next-level_button">Next level</p>
+      </section>
+  
+      <section id="playAgainMenu" class="submenu_play-again">
+        <p class="play-again_title">You lose</p>
+        <p id="playAgainButton" class="play-again_button">Play again</p>
+      </section>
+
+      <section id="gameOverMenu" class="submenu_play-again">
+        <p class="play-again_title">Game over</p>
+        <p id="gameOverButton" class="play-again_button">Play again</p>
+      </section>
+    </section>
+
+  </body>
+</html>

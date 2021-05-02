@@ -118,6 +118,8 @@ class GameManager{
     //recibe un booleano, si es true, muestra la ui de playAgain
     playAgain(){
         this.ui.hidePlayAgain()
+        this.data.score = 0
+        this.ui.updateScore(this.data)
         this.init()
     }
 

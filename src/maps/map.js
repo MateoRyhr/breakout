@@ -2,6 +2,24 @@ export default class Map{
 
   maps = [
     [
+      [1,1,1,1,1,1,1,1],
+      [1,1,1,1,1,1,1,1],
+      [1,1,1,1,1,1,1,1],
+      [1,1,1,1,1,1,1,1],
+      [1,1,1,1,1,1,1,1],
+      [1,1,1,1,1,1,1,1],
+      [1,1,1,1,1,1,1,1],
+      [1,1,1,1,1,1,1,1],
+      [1,1,1,1,1,1,1,1],
+      [1,1,1,1,1,1,1,1],
+      [1,1,1,1,1,1,1,1],
+      [1,1,1,1,1,1,1,1],
+      [1,1,1,1,1,1,1,1],
+      [1,1,1,1,1,1,1,1],
+      [1,1,1,1,1,1,1,1],
+      [1,1,1,1,1,1,1,1]
+    ],
+    [
       [0,1,1,1,1,1,1,0],
       [0,1,0,0,0,0,1,0],
       [0,0,0,0,0,0,0,0],
@@ -54,7 +72,7 @@ export default class Map{
       [0,0,0,0,0,0,0,0],
       [1,0,1,0,0,1,0,1],
       [1,1,1,1,1,1,1,1],
-    ],
+    ]
   ]
 
   constructor(ui,blockConstructor){
@@ -81,9 +99,9 @@ export default class Map{
   // la funcion crear nivel recibe una matriz que representa la posicion de los bloques
   createLevel(m,data,blockConstructor,ballConstructor){
     this.blocks = new Array()
+    let randomPalette = data.blockColors[Math.floor(Math.random()*data.blockColors.length)]
     for (let i = 0; i < m.length; i++) {
       //colo aleatorio para cada fila
-      let randomColor = data.blockColors[Math.floor(Math.random()*6)]
       for (let j = 0; j < m[i].length; j++) {
         if(m[i][j]){
           this.blocks.push(new blockConstructor(
@@ -91,7 +109,7 @@ export default class Map{
             this.blockHeight * i,
             this.blockWidth,
             this.blockHeight,
-            randomColor
+            randomPalette[i]
             // color aleatorio para cada bloque
             //data.blockColors[Math.floor(Math.random()*6)]
           ))

@@ -117,12 +117,22 @@ body{
     border-radius: 8px;
 }
 
+.playMenu-settings_music-icon {
+    width: 3rem;
+    height: 2.5rem;
+    max-height: 2.5rem;
+
+    background-image: url(../../assets/icons/music.svg);
+    background-size: cover;
+    background-position: center;
+}
+
 .playMenu-settings_sound-icon {
     width: 3rem;
     height: 2.5rem;
     max-height: 2.5rem;
 
-    background-image: url(../../assets/icons/volume-up-white.svg);
+    background-image: url(../../assets/icons/effects.svg);
     background-size: cover;
     
     margin-right: 5%;
@@ -146,7 +156,7 @@ body{
 }
 
 #left-arrow{
-    background-image: url(../../assets/icons/left-arrow-white.svg);
+    background-image: url(../../assets/icons/left-arrow.svg);
     border-left: 5px solid #311d3f;
     border-radius: 50px; 
 }
@@ -156,7 +166,7 @@ body{
 }
 
 #up-arrow{
-    background-image: url(../../assets/icons/up-arrow-white.svg);
+    background-image: url(../../assets/icons/up-arrow.svg);
     border-top: 5px solid #311d3f;
     border-radius: 50px;
 }
@@ -166,7 +176,7 @@ body{
 }
 
 #right-arrow{
-    background-image: url(../../assets/icons/right-arrow-white.svg);
+    background-image: url(../../assets/icons/right-arrow.svg);
     border-right: 5px solid #311d3f;
     border-radius: 50px;
 }

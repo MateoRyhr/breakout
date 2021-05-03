@@ -3,7 +3,7 @@ export default class Player{
         this.blockPlayer = blockPlayer
         this.ball = ball
         this.gameHeight = gameHeight
-        this.ballMaxVelY = this.gameHeight * 0.009
+        this.ballMaxVelY = this.gameHeight * 0.008
         this.blockPlayerVel = this.gameHeight * 0.009
     }
 

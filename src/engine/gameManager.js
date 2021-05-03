@@ -21,12 +21,13 @@ class GameManager{
         this.ballMaxVelX = this.ui.gameHeight * 0.008
 
         // para asignar una funcion a un evento no podemos hacer lo siguiente:
-        // this.ui.soundIcon.addEventListener('click',this.soundHandler)
+        // this.ui.effectsIcon.addEventListener('click',this.soundEffectsHandler)
         // para ello llame a la funcion dentro de una arrow funtion ya que,
         // dentro de addEventListener this hace referencia a la fuente del evento
         // usando () => {} this hara referencia al contexto de la arrow function
         // o sea el objeto instanciado
-        this.ui.soundIcon.addEventListener('click',() => this.soundHandler())
+        this.ui.effectsIcon.addEventListener('click',() => this.soundEffectsHandler())
+        this.ui.musicIcon.addEventListener('click', () => this.musicHandler())
         this.ui.playButton.addEventListener('click',() => this.init())
         this.ui.playAgainButton.addEventListener('click', () => this.playAgain())
         this.ui.nextLevelButton.addEventListener('click', () => this.nextLevel())
@@ -36,10 +37,16 @@ class GameManager{
         this.map = new Map(this.ui,Objects.Block)
     }
 
-    soundHandler(){
-        this.data.sound = !this.data.sound
-        this.ui.setSound(this.data.sound)
-        this.audio.musicMuteUnmute(this.data.sound)
+    soundEffectsHandler(){
+        this.data.soundEffects = !this.data.soundEffects
+        this.ui.setEffectsSound(this.data.soundEffects)
+        //this.audio.effectsMuteUnmute(this.data.soundEffects)
+    }
+
+    musicHandler(){
+        this.data.music = !this.data.music
+        this.ui.setMusic(this.data.music)
+        this.audio.musicMuteUnmute(this.data.music)     
     }
 
     initControls(){
@@ -74,7 +81,7 @@ class GameManager{
         for (let i = 0; i < this.map.blocks.length; i++) {
             if(this.map.blocks[i]){
                 if(this.map.ball.collision(this.map.blocks[i],true,this.ballMaxVelX)){
-                    if(this.data.sound){
+                    if(this.data.soundEffects){
                         this.audio.playSound(this.audio.breakSrc,1,false)
                     }
                     this.map.blocks[i] = undefined
@@ -86,23 +93,23 @@ class GameManager{
         }
         // player collision
         if(this.map.ball.collision(this.map.blockPlayer,true,this.ballMaxVelX)){
-            if(this.data.sound){
+            if(this.data.soundEffects){
                 this.audio.playSound(this.audio.bounceSrc,0.75,false)
             }
         }
         //walls collision
         if(this.map.ball.collision(this.map.leftWall,true,this.ballMaxVelX)){
-            if(this.data.sound) {
+            if(this.data.soundEffects) {
                 this.audio.playSound(this.audio.bounceSrc,0.75,false)
             }
         }
         if(this.map.ball.collision(this.map.upWall,true,this.ballMaxVelX)){
-            if(this.data.sound){
+            if(this.data.soundEffects){
                 this.audio.playSound(this.audio.bounceSrc,0.75,false)
             }
         }
         if(this.map.ball.collision(this.map.rightWall,true,this.ballMaxVelX)){
-            if(this.data.sound){
+            if(this.data.soundEffects){
                 this.audio.playSound(this.audio.bounceSrc,0.75,false)
             }
         }

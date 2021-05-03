@@ -17,7 +17,8 @@ export default class Ui{
         this.upArrow = document.getElementById('up-arrow')
         this.rightArrow = document.getElementById('right-arrow')
         this.score = document.getElementById('score')
-        this.soundIcon = document.getElementById('soundIcon')
+        this.effectsIcon = document.getElementById('effectsIcon')
+        this.musicIcon = document.getElementById('musicIcon')
 
         this.submenu = document.getElementById('submenu')
         this.nextLevelMenu = document.getElementById('nextLevelMenu')
@@ -36,11 +37,19 @@ export default class Ui{
     //     return Ui.instance
     // }
 
-    setSound(sound){
+    setEffectsSound(sound){
         if(sound){
-            this.soundIcon.style.backgroundImage = 'url(../../assets/icons/volume-up-white.svg)'
+            this.effectsIcon.style.backgroundImage = 'url(../../assets/icons/effects.svg)'
         }else{
-            this.soundIcon.style.backgroundImage = 'url(../../assets/icons/volume-mute-white.svg)'
+            this.effectsIcon.style.backgroundImage = 'url(../../assets/icons/effects-mute.svg)'
+        }
+    }
+
+    setMusic(music){
+        if(music){
+            this.musicIcon.style.backgroundImage = 'url(../../assets/icons/music.svg)'
+        }else{
+            this.musicIcon.style.backgroundImage = 'url(../../assets/icons/music-mute.svg)'
         }
     }
 

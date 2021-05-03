@@ -35,10 +35,8 @@ class GameObject {
             let randomNum = Math.floor(Math.random() * 2)
             if(randomNum === 1){
               this.velx -= maxVel/8;
-              console.log(this.velx)
             }else{
               this.velx += maxVel/8;
-              console.log(this.velx)
             }
           }
           //bounces

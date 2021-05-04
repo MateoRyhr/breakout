@@ -17,17 +17,22 @@
       <div id="effectsIcon" class="playMenu-settings_sound-icon"></div>
     </section>
 
-    <section id="menu" class="menu">
+    <section id="menu" class="menu" style="display: flex;">
       <h1 class="menu_title">Breakout</h1>
       <h2 class="menu_play" id="play">PLAY</h2>
+      <footer class="menu_footer">
+        <p class="footer_copyright">&copy 2021 - Mateo Ryhr</p>
+        <p class="footer_music-license">Music by <a href="https://soundcloud.com/lovelightclub/dreamer">Love Light Club</a></p>
+      </footer>
+
     </section>
 
     <canvas class="canvas" id="canvas"></canvas>
 
     <section id='tactilControls' class="playMenu-tactil-controls">
-      <div id="left-arrow" class="playMenu-tactil-controls_button"></div>
-      <div id="up-arrow" class="playMenu-tactil-controls_button"></div>
-      <div id="right-arrow" class="playMenu-tactil-controls_button"></div>
+      <div id="left-arrow" class="playMenu-tactil-controls_button left-arrow"></div>
+      <div id="up-arrow" class="playMenu-tactil-controls_button up-arrow"></div>
+      <div id="right-arrow" class="playMenu-tactil-controls_button right-arrow"></div>
     </section>
 
 
@@ -42,8 +47,9 @@
         <p id="playAgainButton" class="play-again_button">Play again</p>
       </section>
 
-      <section id="gameOverMenu" class="submenu_play-again">
-        <p class="play-again_title">Game over</p>
+      <section id="gameOverMenu" class="submenu_game-over">
+        <p class="game-over_title">Congratulations!</p>
+        <p class="game-over_text">You won all levels</p>
         <p id="gameOverButton" class="play-again_button">Play again</p>
       </section>
     </section>

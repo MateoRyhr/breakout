@@ -6,6 +6,7 @@ export default class Ui{
     constructor(){
         this.widthScreen = window.screen.width
         this.heightScreen = window.screen.height
+        this.body = document.querySelector('body')
 
         this.menu = document.getElementById('menu')
         this.playButton = document.getElementById('play')
@@ -70,6 +71,10 @@ export default class Ui{
             this.gameHeight = 940
             this.gameWidth = this.gameHeight * 0.8
         }
+    }
+
+    changeBackgroundColor(color){
+        this.body.style.backgroundColor = color
     }
 
     showGame(){

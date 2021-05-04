@@ -32,8 +32,7 @@ class GameManager{
         this.ui.playAgainButton.addEventListener('click', () => this.playAgain())
         this.ui.nextLevelButton.addEventListener('click', () => this.nextLevel())
         this.ui.gameOverButton.addEventListener('click', () => this.gameOver())
-
-
+        addEventListener('keydown',e => this.enterHandler(e))
         this.map = new Map(this.ui,Objects.Block)
     }
 
@@ -47,6 +46,23 @@ class GameManager{
         this.data.music = !this.data.music
         this.ui.setMusic(this.data.music)
         this.audio.musicMuteUnmute(this.data.music)     
+    }
+
+    enterHandler(e){
+        if(e.keyCode === 13){
+            if(this.ui.menu.style.display === 'flex'){
+                this.init()
+            }
+            if(this.ui.playAgainMenu.style.display === 'flex'){
+                this.playAgain()
+            } 
+            if(this.ui.nextLevelMenu.style.display === 'flex'){
+                this.nextLevel()
+            } 
+            if(this.ui.gameOverMenu.style.display === 'flex'){
+                this.gameOver()
+            } 
+        }
     }
 
     initControls(){
@@ -171,7 +187,7 @@ class GameManager{
         this.ui.showGame()
         // this.audio.music.load()
         this.audio.music.play()
-        this.map.createLevel(this.map.maps[this.data.level],this.data,Objects.Block,Objects.Ball)
+        this.map.createLevel(this.map.maps[this.data.level],this.data,Objects.Block,Objects.Ball,this.ui)
         this.player = new Player(this.map.blockPlayer,this.map.ball,this.ui.gameHeight)
         this.initControls()
         this.running = setInterval(() => this.game(),this.data.speed)

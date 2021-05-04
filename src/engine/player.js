@@ -7,14 +7,13 @@ export default class Player{
         this.blockPlayerVel = this.gameHeight * 0.009
     }
 
-    uiButton(e){
-
-    }
-
-    keyDown(e){
+    keyDown(e,enterHandler){
         let key = e.keyCode
         let v = this.blockPlayer.velx
         switch(key){
+            // case 13:
+            //     enterHandler(e)
+            //     break
             case 32:
                 this.throwBall()
                 break
@@ -55,8 +54,6 @@ export default class Player{
             case 39:
                 this.stopMoveRight(e,v)
                 break
-            case 13:
-                this.uiButton(e)
             default:
         }
     }
@@ -74,6 +71,8 @@ export default class Player{
             default:
         }
     }
+
+
 
     throwBall(){
         if (!this.ball.launched) {

@@ -4,6 +4,7 @@ export default class Audio{
     this.music = document.createElement('audio')
     this.music.setAttribute('src',this.musicSrc)
     this.music.volume = 0.2
+    this.music.loop = true
     this.bounceSrc = '../../assets/sounds/bounce.mp3'
     this.breakSrc = '../../assets/sounds/break.mp3'
   }

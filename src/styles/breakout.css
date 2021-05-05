@@ -31,7 +31,7 @@ body{
     flex-direction: column;
     align-items: center;
 
-    background-color: #311d3f;
+    background-color: #000000;
     border: 1px solid black;
 }
 
@@ -122,7 +122,7 @@ body{
 
     justify-content: space-between;
     align-items: center;
-    background-color: #311d3f;
+    background-color: #000000;
 
     border: 1px solid black
 }
@@ -164,7 +164,7 @@ body{
     align-items: center;
     justify-content:space-evenly;
 
-    background-color: #311d3f;
+    background-color: #000000;
     border: 1px solid black;
 }
 
@@ -189,7 +189,7 @@ body{
 
 .left-arrow{
     background-image: url(../../assets/icons/left-arrow-neon.svg);
-    border-left: 3px solid #311d3f;
+    border-left: 3px solid #000000;
     border-radius: 50px; 
 }
 
@@ -199,7 +199,7 @@ body{
 
 .up-arrow{
     background-image: url(../../assets/icons/up-arrow-neon.svg);
-    border-top: 3px solid #311d3f;
+    border-top: 3px solid #000000;
     border-radius: 100%;
 }
 
@@ -209,7 +209,7 @@ body{
 
 .right-arrow{
     background-image: url(../../assets/icons/right-arrow-neon.svg);
-    border-right: 3px solid #311d3f;
+    border-right: 3px solid #000000;
     border-radius: 50px;
 }
 
@@ -239,7 +239,7 @@ body{
     width: 280px;
     height: 280px;
     color: #fff;
-    background-color: #311d3f;
+    background-color: #000000;
     font-size: 2.7rem;
     border-radius: 5px;
 

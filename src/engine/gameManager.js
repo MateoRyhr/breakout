@@ -67,11 +67,11 @@ class GameManager{
 
     initControls(){
         if(!this.initializedControls){
-            this.ui.leftArrow.addEventListener('touchstart',e => this.player.touchStart(e))
-            this.ui.upArrow.addEventListener('touchstart',e => this.player.touchStart(e))
-            this.ui.rightArrow.addEventListener('touchstart',e => this.player.touchStart(e))
-            this.ui.leftArrow.addEventListener('touchend',e => this.player.touchEnd(e))
-            this.ui.rightArrow.addEventListener('touchend',e => this.player.touchEnd(e))
+            this.ui.leftArrow.addEventListener('touchstart',e => this.player.moveLeft(e))
+            this.ui.upArrow.addEventListener('touchstart',e => this.player.throwBall(e))
+            this.ui.rightArrow.addEventListener('touchstart',e => this.player.moveRight(e))
+            this.ui.leftArrow.addEventListener('touchend',e => this.player.stopMoveLeft(e))
+            this.ui.rightArrow.addEventListener('touchend',e => this.player.stopMoveRight(e))
             addEventListener('keydown',e => this.player.keyDown(e))
             addEventListener('keyup',e => this.player.keyUp(e))
             this.initializedControls = true

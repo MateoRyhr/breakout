@@ -11,14 +11,12 @@ import Player from './player.js'
 class GameManager{
 
     constructor(){
+        this.running = false
         this.data = new DataManager()
         this.ui = new Ui()
         this.ui.setup()
         this.audio = new Audio()
         this.render = new Render(this.ui)
-        this.player = new Player()
-
-        this.ballMaxVelX = this.ui.gameHeight * 0.008
 
         // para asignar una funcion a un evento no podemos hacer lo siguiente:
         // this.ui.effectsIcon.addEventListener('click',this.soundEffectsHandler)
@@ -28,12 +26,52 @@ class GameManager{
         // o sea el objeto instanciado
         this.ui.effectsIcon.addEventListener('click',() => this.soundEffectsHandler())
         this.ui.musicIcon.addEventListener('click', () => this.musicHandler())
-        this.ui.playButton.addEventListener('click',() => this.init())
+        this.ui.playButton.addEventListener('click',() => this.ui.showDifficultyMenu())
+        this.ui.veryEasyButton.addEventListener('click',() => this.setVeryEasy())
+        this.ui.easyButton.addEventListener('click',() => this.setEasy())
+        this.ui.normalButton.addEventListener('click',() => this.setNormal())
+        this.ui.hardButton.addEventListener('click',() => this.setHard())
         this.ui.playAgainButton.addEventListener('click', () => this.playAgain())
         this.ui.nextLevelButton.addEventListener('click', () => this.nextLevel())
         this.ui.gameOverButton.addEventListener('click', () => this.gameOver())
         addEventListener('keydown',e => this.enterHandler(e))
         this.map = new Map(this.ui,Objects.Block)
+    }
+
+    setVeryEasy(){
+        this.data.difficulty = 'veryeasy'
+        this.data.ballMaxVelX = this.ui.gameHeight * 0.008
+        this.data.ballMaxVelY = this.ui.gameHeight * 0.008
+        this.data.blockPlayerVel = this.ui.gameHeight * 0.016
+        this.ui.hideDifficultyMenu()
+        this.init()
+    }
+
+    setEasy(){
+        this.data.difficulty = 'easy'
+        this.data.ballMaxVelX = this.ui.gameHeight * 0.01
+        this.data.ballMaxVelY = this.ui.gameHeight * 0.01
+        this.data.blockPlayerVel = this.ui.gameHeight * 0.016
+        this.ui.hideDifficultyMenu()
+        this.init()
+    }
+
+    setNormal(){
+        this.data.difficulty = 'normal'
+        this.data.ballMaxVelX = this.ui.gameHeight * 0.013
+        this.data.ballMaxVelY = this.ui.gameHeight * 0.013
+        this.data.blockPlayerVel = this.ui.gameHeight * 0.016
+        this.ui.hideDifficultyMenu()
+        this.init()
+    }
+
+    setHard(){
+        this.data.difficulty = 'hard'
+        this.data.ballMaxVelX = this.ui.gameHeight * 0.016
+        this.data.ballMaxVelY = this.ui.gameHeight * 0.016
+        this.data.blockPlayerVel = this.ui.gameHeight * 0.016
+        this.ui.hideDifficultyMenu()
+        this.init()
     }
 
     soundEffectsHandler(){
@@ -51,7 +89,7 @@ class GameManager{
     enterHandler(e){
         if(e.keyCode === 13){
             if(this.ui.menu.style.display === 'flex'){
-                this.init()
+                this.ui.showDifficultyMenu()
             }
             if(this.ui.playAgainMenu.style.display === 'flex'){
                 this.playAgain()
@@ -96,7 +134,7 @@ class GameManager{
         // map blocks collision
         for (let i = 0; i < this.map.blocks.length; i++) {
             if(this.map.blocks[i]){
-                if(this.map.ball.collision(this.map.blocks[i],true,this.ballMaxVelX)){
+                if(this.map.ball.collision(this.map.blocks[i],true,this.data.ballMaxVelX)){
                     if(this.data.soundEffects){
                         this.audio.playSound(this.audio.breakSrc,1,false)
                     }
@@ -108,37 +146,35 @@ class GameManager{
             }
         }
         // player collision
-        if(this.map.ball.collision(this.map.blockPlayer,true,this.ballMaxVelX)){
+        if(this.map.ball.collision(this.map.blockPlayer,true,this.data.ballMaxVelX)){
             if(this.data.soundEffects){
                 this.audio.playSound(this.audio.bounceSrc,0.75,false)
             }
         }
         //walls collision
-        if(this.map.ball.collision(this.map.leftWall,true,this.ballMaxVelX)){
+        if(this.map.ball.collision(this.map.leftWall,true,this.data.ballMaxVelX)){
             if(this.data.soundEffects) {
                 this.audio.playSound(this.audio.bounceSrc,0.75,false)
             }
         }
-        if(this.map.ball.collision(this.map.upWall,true,this.ballMaxVelX)){
+        if(this.map.ball.collision(this.map.upWall,true,this.data.ballMaxVelX)){
             if(this.data.soundEffects){
                 this.audio.playSound(this.audio.bounceSrc,0.75,false)
             }
         }
-        if(this.map.ball.collision(this.map.rightWall,true,this.ballMaxVelX)){
+        if(this.map.ball.collision(this.map.rightWall,true,this.data.ballMaxVelX)){
             if(this.data.soundEffects){
                 this.audio.playSound(this.audio.bounceSrc,0.75,false)
             }
         }
     }
 
-    //recibe un booleano, si es true muestra la ui de nextLevel
     nextLevel(){
         this.data.level++
         this.ui.hideNextLevel()
         this.init()
     }
 
-    //recibe un booleano, si es true, muestra la ui de playAgain
     playAgain(){
         this.ui.hidePlayAgain()
         this.data.score = 0
@@ -163,11 +199,11 @@ class GameManager{
         }
         if(!blockExist){
             if(this.data.level === this.map.maps.length-1){
-                clearInterval(this.running)
+                this.running = false
                 this.ui.showGameOver()
                 return
             }
-            clearInterval(this.running)
+            this.running = false
             this.ui.showNextLevel()
         }
     }
@@ -178,19 +214,19 @@ class GameManager{
             lose = true
         }
         if(lose){
-            clearInterval(this.running)
+            this.running = false
             this.ui.showPlayAgain()
         }
     }
 
     init(){
         this.ui.showGame()
-        // this.audio.music.load()
         this.audio.music.play()
         this.map.createLevel(this.map.maps[this.data.level],this.data,Objects.Block,Objects.Ball,this.ui)
-        this.player = new Player(this.map.blockPlayer,this.map.ball,this.ui.gameHeight)
+        this.player = new Player(this.map.blockPlayer,this.map.ball,this.data)
         this.initControls()
-        this.running = setInterval(() => this.game(),this.data.speed)
+        this.running = true
+        window.requestAnimationFrame(() => this.game())
     }
 
     game(){
@@ -199,6 +235,9 @@ class GameManager{
         this.render.draw(this.map,this.ui)
         this.checkIfWin()
         this.checkIfLose()
+        if(this.running){
+            window.requestAnimationFrame(() => this.game())
+        }
     }
 }
 

@@ -1,10 +1,9 @@
 export default class Player{
-    constructor(blockPlayer,ball,gameHeight){
+    constructor(blockPlayer,ball,data){
         this.blockPlayer = blockPlayer
         this.ball = ball
-        this.gameHeight = gameHeight
-        this.ballMaxVelY = this.gameHeight * 0.008
-        this.blockPlayerVel = this.gameHeight * 0.012
+        this.ballMaxVelY = data.ballMaxVelY
+        this.blockPlayerVel = data.blockPlayerVel
     }
 
     keyDown(e){

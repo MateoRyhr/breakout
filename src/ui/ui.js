@@ -6,26 +6,40 @@ export default class Ui{
     constructor(){
         this.widthScreen = window.screen.width
         this.heightScreen = window.screen.height
+        console.log(this.heightScreen)
         this.body = document.querySelector('body')
+
+        this.playMenu = document.getElementById('playMenu')
+        this.score = document.getElementById('score')
+        this.musicIcon = document.getElementById('musicIcon')
+        this.effectsIcon = document.getElementById('effectsIcon')
 
         this.menu = document.getElementById('menu')
         this.playButton = document.getElementById('play')
+
+        this.footer = document.getElementById('footer')
+
+        this.difficultyMenu = document.getElementById('difficultyMenu')
+        this.veryEasyButton = document.getElementById('veryEasyButton')
+        this.easyButton = document.getElementById('easyButton')
+        this.normalButton = document.getElementById('normalButton')
+        this.hardButton = document.getElementById('hardButton')
+
         this.canvas = document.getElementById('canvas')
 
-        this.playMenu = document.getElementById('playMenu')
         this.tactilControls = document.getElementById('tactilControls')
         this.leftArrow = document.getElementById('left-arrow')
         this.upArrow = document.getElementById('up-arrow')
         this.rightArrow = document.getElementById('right-arrow')
-        this.score = document.getElementById('score')
-        this.effectsIcon = document.getElementById('effectsIcon')
-        this.musicIcon = document.getElementById('musicIcon')
 
         this.submenu = document.getElementById('submenu')
+
         this.nextLevelMenu = document.getElementById('nextLevelMenu')
         this.nextLevelButton = document.getElementById('nextLevelButton')
+
         this.playAgainMenu = document.getElementById('playAgainMenu')
         this.playAgainButton = document.getElementById('playAgainButton')
+
         this.gameOverMenu = document.getElementById('gameOverMenu')
         this.gameOverButton = document.getElementById('gameOverButton')
     }
@@ -59,7 +73,6 @@ export default class Ui{
         this.gameWidth = this.gameHeight * 0.8
         // 992px ya es un display de pc
         if(this.widthScreen >= 992){
-            this.tactilControls.style.display = 'none'
             this.gameHeight = 580
             this.gameWidth = this.gameHeight * 0.8
         }
@@ -78,7 +91,8 @@ export default class Ui{
     }
 
     showGame(){
-        this.menu.style.display = 'none'
+        this.widthScreen < 992 ? this.showTactilControls() : this.hideTactilControls()
+        this.hideFooter()
         this.canvas.style.display = 'block'
         this.canvas.width = this.gameWidth
         this.canvas.height = this.gameHeight
@@ -97,6 +111,39 @@ export default class Ui{
     }
 
     //recibe un booleano y segun su valor muestra o no el menu
+
+    showFooter(){
+        this.footer.style.display = 'flex'
+    }
+
+    hideFooter(){
+        this.footer.style.display = 'none'
+    }
+
+    showTactilControls(){
+        this.tactilControls.style.display = 'flex'
+    }
+
+    hideTactilControls(){
+        this.tactilControls.style.display = 'none'
+    }
+
+    showMenu(){
+        this.menu.style.display = 'flex'
+    }
+
+    hideMenu(){
+        this.menu.style.display = 'none'
+    }
+
+    showDifficultyMenu(){
+        this.hideMenu()
+        this.difficultyMenu.style.display = 'flex'
+    }
+
+    hideDifficultyMenu(){
+        this.difficultyMenu.style.display = 'none'
+    }
 
     showNextLevel(){
         this.submenu.style.display = 'flex'

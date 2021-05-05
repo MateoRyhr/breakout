@@ -3,12 +3,20 @@ export default class DataManager{
 
         //gameConfig
         this.level = 0
-        this.ballColor = '#FF2800'
-        this.playerColor = '#252a34'
-        this.speed = 10
+        //establecer 4 dificultades:
+        // Very easy
+        // Easy
+        // Normal
+        // Hard
+        this.difficulty
+        this.ballMaxVelX
+        this.ballMaxVelY
         this.soundEffects = true
         this.music = true
         this.score = 0
+
+        this.ballColor = '#FF2800'
+        this.playerColor = '#252a34'
         this.blockColors = [
             [
                 '#e23e57','#88304e','#522546','#311d3f' //lindo

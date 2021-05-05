@@ -22,7 +22,50 @@ body{
     align-items: center;
 }
 
-.menu{
+.playMenu-settings{
+    width: 320px;
+    height: 100%;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000;
+
+    border: 1px solid black
+}
+
+.playMenu-settings_scoreText{
+    padding: 5px 20px;
+    font-size: 2.5rem;
+    margin-left: 5%;
+    color: white;
+    border: 0.5px solid #e23e57;
+    border-radius: 8px;
+}
+
+.playMenu-settings_music-icon {
+    width: 3rem;
+    height: 2.5rem;
+    max-height: 2.5rem;
+
+    background-image: url(../../assets/icons/music.svg);
+    background-size: cover;
+    background-position: center;
+}
+
+.playMenu-settings_sound-icon {
+    width: 3rem;
+    height: 2.5rem;
+    max-height: 2.5rem;
+
+    background-image: url(../../assets/icons/effects.svg);
+    background-size: cover;
+    
+    margin-right: 5%;
+}
+
+.menu, .difficulty-menu{
     width: 320px;
     min-height: 400px;
     max-height: 400px;
@@ -78,13 +121,15 @@ body{
     background-color: #88304e;
 }
 
-.menu_footer{
-    width: 100%;
-    height: 100px;
+.footer{
+    width: 320px;
+    height: 100%;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    background-color: black;
     color: #9b9b9b;
     font-size: 1.2rem;
 }
@@ -101,6 +146,22 @@ body{
     color: #b3b3b3;
 }
 
+.difficulty-menu{
+    display: none;
+    justify-content: center;
+
+    font-size: 3rem;
+    color: white;
+}
+
+.difficulty-menu_button{
+    padding: 20px 30px;
+    margin-bottom: 10%;    
+}
+
+.difficulty-menu_button:hover{
+    font-weight: 1000;
+}
 
 .canvas{
     width: 320px;
@@ -114,65 +175,15 @@ body{
     border: 2px solid black;
 }
 
-.playMenu-settings{
-    width: 320px;
-    height: 100%;
-
-    display: flex;
-
-    justify-content: space-between;
-    align-items: center;
-    background-color: #000000;
-
-    border: 1px solid black
-}
-
-.playMenu-settings_scoreText{
-    padding: 5px 20px;
-    font-size: 2.5rem;
-    margin-left: 5%;
-    color: white;
-    border: 0.5px solid #e23e57;
-    border-radius: 8px;
-}
-
-.playMenu-settings_music-icon {
-    width: 3rem;
-    height: 2.5rem;
-    max-height: 2.5rem;
-
-    background-image: url(../../assets/icons/music.svg);
-    background-size: cover;
-    background-position: center;
-}
-
-.playMenu-settings_sound-icon {
-    width: 3rem;
-    height: 2.5rem;
-    max-height: 2.5rem;
-
-    background-image: url(../../assets/icons/effects.svg);
-    background-size: cover;
-    
-    margin-right: 5%;
-}
-
 .playMenu-tactil-controls{
     width: 320px;
     height: 100%;
-    display:flex;
+    display: none;
     align-items: center;
     justify-content:space-evenly;
 
     background-color: #000000;
     border: 1px solid black;
-}
-
-.tactilControlsContainer{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .playMenu-tactil-controls_button{
@@ -279,31 +290,34 @@ body{
 }
 
 @media only screen and (min-width: 992px){
-    .menu{
+    .menu, .difficulty-menu{
         width: calc(580px * 0.8);
-        min-height: 580px;
+        height: 500px;
+        min-height: 500px;
     }
-    .playMenu-settings{
+    .playMenu-settings, .footer{
         width: calc(580px * 0.8);
     }
 }
 
 @media only screen and (min-width: 1440px){
-    .menu{
+    .menu, .difficulty-menu{
         width: calc(760px * 0.8);
-        min-height: 760px;
+        height: 680px;
+        min-height: 680px;
     }
-    .playMenu-settings{
+    .playMenu-settings, .footer{
         width: calc(760px * 0.8);
     }
 }
 
 @media only screen and (min-width: 1920px){
-    .menu{
+    .menu, .difficulty-menu{
         width: calc(940px * 0.8);
-        min-height: 940px;
+        height: 860px;
+        min-height: 860px;
     }
-    .playMenu-settings{
+    .playMenu-settings, .footer{
         width: calc(940px * 0.8);
     }
 }

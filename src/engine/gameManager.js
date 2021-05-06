@@ -12,6 +12,7 @@ class GameManager{
 
     constructor(){
         this.running = false
+        this.initializedControls = false
         this.data = new DataManager()
         this.ui = new Ui()
         this.ui.setup()
@@ -43,6 +44,7 @@ class GameManager{
         this.data.ballMaxVelX = this.ui.gameHeight * 0.008
         this.data.ballMaxVelY = this.ui.gameHeight * 0.008
         this.data.blockPlayerVel = this.ui.gameHeight * 0.016
+        this.data.lifes = 5
         this.ui.hideDifficultyMenu()
         this.init()
     }
@@ -52,6 +54,7 @@ class GameManager{
         this.data.ballMaxVelX = this.ui.gameHeight * 0.01
         this.data.ballMaxVelY = this.ui.gameHeight * 0.01
         this.data.blockPlayerVel = this.ui.gameHeight * 0.016
+        this.data.lifes = 5
         this.ui.hideDifficultyMenu()
         this.init()
     }
@@ -61,6 +64,7 @@ class GameManager{
         this.data.ballMaxVelX = this.ui.gameHeight * 0.013
         this.data.ballMaxVelY = this.ui.gameHeight * 0.013
         this.data.blockPlayerVel = this.ui.gameHeight * 0.016
+        this.data.lifes = 5
         this.ui.hideDifficultyMenu()
         this.init()
     }
@@ -70,6 +74,7 @@ class GameManager{
         this.data.ballMaxVelX = this.ui.gameHeight * 0.016
         this.data.ballMaxVelY = this.ui.gameHeight * 0.016
         this.data.blockPlayerVel = this.ui.gameHeight * 0.016
+        this.data.lifes = 3
         this.ui.hideDifficultyMenu()
         this.init()
     }
@@ -148,23 +153,23 @@ class GameManager{
         // player collision
         if(this.map.ball.collision(this.map.blockPlayer,true,this.data.ballMaxVelX)){
             if(this.data.soundEffects){
-                this.audio.playSound(this.audio.bounceSrc,0.75,false)
+                this.audio.playSound(this.audio.bounceSrc,1,false)
             }
         }
         //walls collision
         if(this.map.ball.collision(this.map.leftWall,true,this.data.ballMaxVelX)){
             if(this.data.soundEffects) {
-                this.audio.playSound(this.audio.bounceSrc,0.75,false)
+                this.audio.playSound(this.audio.bounceSrc,1,false)
             }
         }
         if(this.map.ball.collision(this.map.upWall,true,this.data.ballMaxVelX)){
             if(this.data.soundEffects){
-                this.audio.playSound(this.audio.bounceSrc,0.75,false)
+                this.audio.playSound(this.audio.bounceSrc,1,false)
             }
         }
         if(this.map.ball.collision(this.map.rightWall,true,this.data.ballMaxVelX)){
             if(this.data.soundEffects){
-                this.audio.playSound(this.audio.bounceSrc,0.75,false)
+                this.audio.playSound(this.audio.bounceSrc,1,false)
             }
         }
     }
@@ -177,7 +182,9 @@ class GameManager{
 
     playAgain(){
         this.ui.hidePlayAgain()
+        this.data.difficulty === 'hard' ? this.data.lifes = 3 : this.data.lifes = 5
         this.data.score = 0
+        this.data.level = 0
         this.ui.updateScore(this.data)
         this.init()
     }
@@ -214,12 +221,21 @@ class GameManager{
             lose = true
         }
         if(lose){
-            this.running = false
-            this.ui.showPlayAgain()
+            this.data.lifes--
+            if(this.data.lifes === 0){
+                this.ui.updateLifes(this.data)
+                this.running = false
+                this.ui.showPlayAgain()
+            }else{
+                this.running = false
+                this.ui.updateLifes(this.data)
+                setTimeout(() => this.init(),500)
+            }
         }
     }
 
     init(){
+        this.ui.lifes.textContent = this.data.lifes
         this.ui.showGame()
         this.audio.music.play()
         this.map.createLevel(this.map.maps[this.data.level],this.data,Objects.Block,Objects.Ball,this.ui)

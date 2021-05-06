@@ -13,6 +13,7 @@ export default class DataManager{
         this.ballMaxVelY
         this.soundEffects = true
         this.music = true
+        this.lifes = 0
         this.score = 0
 
         this.ballColor = '#FF2800'

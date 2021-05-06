@@ -31,36 +31,40 @@ body{
     justify-content: space-between;
     align-items: center;
     background-color: #000000;
-
+    font-size: 1.75rem;
+    color: white;
     border: 1px solid black
 }
 
-.playMenu-settings_scoreText{
-    padding: 5px 20px;
-    font-size: 2.5rem;
-    margin-left: 5%;
-    color: white;
+.playMenu-settings_scoreText, .playMenu-settings_lifesText{
+    padding: 5px 5px;
     border: 0.5px solid #e23e57;
     border-radius: 8px;
 }
 
+.playMenu-settings_scoreText{
+    width: 35%;
+}
+
 .playMenu-settings_music-icon {
     width: 3rem;
-    height: 2.5rem;
-    max-height: 2.5rem;
+    height: 2.7rem;
+    max-height: 2.7rem;
 
-    background-image: url(../../assets/icons/music.svg);
+    background-image: url(../../assets/icons/music-neon.svg);
     background-size: cover;
     background-position: center;
+    margin-left: 5%;
 }
 
 .playMenu-settings_sound-icon {
     width: 3rem;
-    height: 2.5rem;
-    max-height: 2.5rem;
+    height: 2.7rem;
+    max-height: 2.7rem;
 
-    background-image: url(../../assets/icons/effects.svg);
+    background-image: url(../../assets/icons/effects-neon.svg);
     background-size: cover;
+    background-position: center;
     
     margin-right: 5%;
 }
@@ -298,6 +302,9 @@ body{
     .playMenu-settings, .footer{
         width: calc(580px * 0.8);
     }
+    .playMenu-settings{
+        font-size: 2.5rem;
+    }
 }
 
 @media only screen and (min-width: 1440px){
@@ -313,11 +320,11 @@ body{
 
 @media only screen and (min-width: 1920px){
     .menu, .difficulty-menu{
-        width: calc(940px * 0.8);
+        width: calc(900px * 0.8);
         height: 860px;
         min-height: 860px;
     }
     .playMenu-settings, .footer{
-        width: calc(940px * 0.8);
+        width: calc(900px * 0.8);
     }
 }

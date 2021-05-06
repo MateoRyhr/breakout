@@ -3,23 +3,15 @@ export default class Audio{
     this.musicSrc = '../../assets/sounds/dreamer.mp3'
     this.music = document.createElement('audio')
     this.music.setAttribute('src',this.musicSrc)
-    this.music.volume = 0.2
+    this.music.volume = 0.3
     this.music.loop = true
     this.bounceSrc = '../../assets/sounds/bounce.mp3'
     this.breakSrc = '../../assets/sounds/break.mp3'
   }
 
-  // effectsMuteUnmute(sound){
-  //   if(sound){
-  //     this.music.volume = 0.2
-  //   }else{
-  //     this.music.volume = 0
-  //   }
-  // }
-
   musicMuteUnmute(music){
     if(music){
-      this.music.volume = 0.2
+      this.music.volume = 0.3
     }else{
       this.music.volume = 0
     }

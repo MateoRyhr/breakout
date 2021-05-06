@@ -7,11 +7,13 @@ export default class Ui{
         this.widthScreen = window.screen.width
         this.heightScreen = window.screen.height
         console.log(this.heightScreen)
+        console.log(this.widthScreen)
         this.body = document.querySelector('body')
 
         this.playMenu = document.getElementById('playMenu')
-        this.score = document.getElementById('score')
         this.musicIcon = document.getElementById('musicIcon')
+        this.score = document.getElementById('score')
+        this.lifes = document.getElementById('lifes')
         this.effectsIcon = document.getElementById('effectsIcon')
 
         this.menu = document.getElementById('menu')
@@ -54,17 +56,17 @@ export default class Ui{
 
     setEffectsSound(sound){
         if(sound){
-            this.effectsIcon.style.backgroundImage = 'url(../../assets/icons/effects.svg)'
+            this.effectsIcon.style.backgroundImage = 'url(../../assets/icons/effects-neon.svg)'
         }else{
-            this.effectsIcon.style.backgroundImage = 'url(../../assets/icons/effects-mute.svg)'
+            this.effectsIcon.style.backgroundImage = 'url(../../assets/icons/effects-mute-neon.svg)'
         }
     }
 
     setMusic(music){
         if(music){
-            this.musicIcon.style.backgroundImage = 'url(../../assets/icons/music.svg)'
+            this.musicIcon.style.backgroundImage = 'url(../../assets/icons/music-neon.svg)'
         }else{
-            this.musicIcon.style.backgroundImage = 'url(../../assets/icons/music-mute.svg)'
+            this.musicIcon.style.backgroundImage = 'url(../../assets/icons/music-mute-neon.svg)'
         }
     }
 
@@ -81,7 +83,7 @@ export default class Ui{
             this.gameWidth = this.gameHeight * 0.8
         }
         if(this.widthScreen >= 1920){
-            this.gameHeight = 940
+            this.gameHeight = 900
             this.gameWidth = this.gameHeight * 0.8
         }
     }
@@ -98,6 +100,7 @@ export default class Ui{
         this.canvas.height = this.gameHeight
         this.canvas.style.width = `${this.gameWidth}px`
         this.canvas.style.minHeight = `${this.gameHeight}px`
+        this.canvas.style.height = `${this.gameHeight}px`
     }
 
     updateScore(data){
@@ -107,6 +110,16 @@ export default class Ui{
         setTimeout(() => {
             this.score.style.color = '#ffffff'
             this.score.style.fontWeight = 'normal'
+        },125)
+    }
+
+    updateLifes(data){
+        this.lifes.style.color = '#e23e57'
+        this.lifes.style.fontWeight = '200'
+        this.lifes.textContent = data.lifes
+        setTimeout(() => {
+            this.lifes.style.color = '#ffffff'
+            this.lifes.style.fontWeight = 'normal'
         },125)
     }
 

@@ -6,8 +6,6 @@ export default class Ui{
     constructor(){
         this.widthScreen = window.screen.width
         this.heightScreen = window.screen.height
-        console.log(this.heightScreen)
-        console.log(this.widthScreen)
         this.body = document.querySelector('body')
 
         this.playMenu = document.getElementById('playMenu')
@@ -18,6 +16,9 @@ export default class Ui{
 
         this.menu = document.getElementById('menu')
         this.playButton = document.getElementById('play')
+        this.selectLevelButton = document.getElementById('selectLevel')
+
+        this.menuLevels = document.getElementById('menuLevels')
 
         this.footer = document.getElementById('footer')
 
@@ -35,6 +36,9 @@ export default class Ui{
         this.rightArrow = document.getElementById('right-arrow')
 
         this.submenu = document.getElementById('submenu')
+
+        this.winLevelMenu = document.getElementById('winLevelMenu')
+        this.winLevelPlayAgainButton = document.getElementById('winLevelPlayAgain')
 
         this.nextLevelMenu = document.getElementById('nextLevelMenu')
         this.nextLevelButton = document.getElementById('nextLevelButton')
@@ -125,6 +129,20 @@ export default class Ui{
 
     //recibe un booleano y segun su valor muestra o no el menu
 
+    showMenuLevels(){
+        this.menu.style.display = 'none'
+        this.menuLevels.style.display = 'flex'
+    }
+    hideMenuLevels(){
+        this.menuLevels.style.display = 'none'
+    }
+
+    addLevelButtonEvents(cb){
+        for(let i=1;i<=10;i++){
+            document.getElementById(`lvl${i}`).addEventListener('click',e => cb(e))
+        }
+    }
+
     showFooter(){
         this.footer.style.display = 'flex'
     }
@@ -142,6 +160,8 @@ export default class Ui{
     }
 
     showMenu(){
+        this.hideTactilControls()
+        this.showFooter()
         this.menu.style.display = 'flex'
     }
 
@@ -151,11 +171,22 @@ export default class Ui{
 
     showDifficultyMenu(){
         this.hideMenu()
+        this.hideMenuLevels()
         this.difficultyMenu.style.display = 'flex'
     }
 
     hideDifficultyMenu(){
         this.difficultyMenu.style.display = 'none'
+    }
+
+    showWinLevelMenu(){
+        this.submenu.style.display = 'flex'
+        this.winLevelMenu.style.display = 'flex'
+    }
+
+    hideWinLevelMenu(){
+        this.submenu.style.display = 'none'
+        this.winLevelMenu.style.display = 'none'
     }
 
     showNextLevel(){

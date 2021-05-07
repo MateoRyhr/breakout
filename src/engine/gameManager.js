@@ -13,6 +13,7 @@ class GameManager{
     constructor(){
         this.running = false
         this.initializedControls = false
+        this.levelSelected = false
         this.data = new DataManager()
         this.ui = new Ui()
         this.ui.setup()
@@ -28,15 +29,38 @@ class GameManager{
         this.ui.effectsIcon.addEventListener('click',() => this.soundEffectsHandler())
         this.ui.musicIcon.addEventListener('click', () => this.musicHandler())
         this.ui.playButton.addEventListener('click',() => this.ui.showDifficultyMenu())
+        this.ui.selectLevelButton.addEventListener('click',() => this.ui.showMenuLevels())
+        this.ui.addLevelButtonEvents(e => this.initSelectedLevel(e))
         this.ui.veryEasyButton.addEventListener('click',() => this.setVeryEasy())
         this.ui.easyButton.addEventListener('click',() => this.setEasy())
         this.ui.normalButton.addEventListener('click',() => this.setNormal())
         this.ui.hardButton.addEventListener('click',() => this.setHard())
+        this.ui.winLevelPlayAgainButton.addEventListener('click', () => this.finishLevel())
         this.ui.playAgainButton.addEventListener('click', () => this.playAgain())
         this.ui.nextLevelButton.addEventListener('click', () => this.nextLevel())
-        this.ui.gameOverButton.addEventListener('click', () => this.gameOver())
+        this.ui.gameOverButton.addEventListener('click', () => this.finishLevel())
         addEventListener('keydown',e => this.enterHandler(e))
         this.map = new Map(this.ui,Objects.Block)
+    }
+
+    initSelectedLevel(e){
+        this.data.level = parseInt(e.srcElement.innerHTML) -1
+        this.levelSelected = true
+        this.ui.showDifficultyMenu()
+    }
+
+    finishLevel(){
+        this.levelSelected = false
+        this.ui.canvas.style.display = 'none'
+        this.ui.hideGameOver()
+        this.ui.hideWinLevelMenu()
+        this.audio.music.load()
+        this.data.score = 0
+        this.data.lifes = 0
+        this.data.level = 0
+        this.ui.updateScore(this.data)
+        this.ui.updateLifes(this.data)
+        this.ui.showMenu()
     }
 
     setVeryEasy(){
@@ -96,6 +120,9 @@ class GameManager{
             if(this.ui.menu.style.display === 'flex'){
                 this.ui.showDifficultyMenu()
             }
+            if(this.ui.winLevelMenu.style.display === 'flex'){
+                this.finishLevel()
+            }
             if(this.ui.playAgainMenu.style.display === 'flex'){
                 this.playAgain()
             } 
@@ -103,7 +130,7 @@ class GameManager{
                 this.nextLevel()
             } 
             if(this.ui.gameOverMenu.style.display === 'flex'){
-                this.gameOver()
+                this.finishLevel()
             } 
         }
     }
@@ -145,7 +172,7 @@ class GameManager{
                     }
                     this.map.blocks[i] = undefined
                     i = this.map.blocks.length //para no romper dos bloques
-                    this.data.plusScore(10)
+                    this.data.score += 10
                     this.ui.updateScore(this.data)
                 }
             }
@@ -184,15 +211,9 @@ class GameManager{
         this.ui.hidePlayAgain()
         this.data.difficulty === 'hard' ? this.data.lifes = 3 : this.data.lifes = 5
         this.data.score = 0
-        this.data.level = 0
-        this.ui.updateScore(this.data)
-        this.init()
-    }
-
-    gameOver(){
-        this.ui.hideGameOver()
-        this.data.level = 0
-        this.data.score = 0
+        if(!this.levelSelected){
+            this.data.level = 0
+        }
         this.ui.updateScore(this.data)
         this.init()
     }
@@ -205,6 +226,11 @@ class GameManager{
             }
         }
         if(!blockExist){
+            if(this.levelSelected){
+                this.running = false
+                this.ui.showWinLevelMenu()
+                return
+            }
             if(this.data.level === this.map.maps.length-1){
                 this.running = false
                 this.ui.showGameOver()
@@ -228,7 +254,12 @@ class GameManager{
                 this.ui.showPlayAgain()
             }else{
                 this.running = false
+                if(this.data.score > 0){
+                    if(this.data.score <= 500) this.data.score = 0
+                    else this.data.score -= 500
+                }
                 this.ui.updateLifes(this.data)
+                this.ui.updateScore(this.data)
                 setTimeout(() => this.init(),500)
             }
         }

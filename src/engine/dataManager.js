@@ -14,7 +14,7 @@ export default class DataManager{
         this.soundEffects = true
         this.music = true
         this.lifes = 0
-        this.score = 0
+        this.score = 0//max score 5500
 
         this.ballColor = '#FF2800'
         this.playerColor = '#252a34'
@@ -56,9 +56,5 @@ export default class DataManager{
                 '#3a0088','#930077','#e61c5d','#ffbd39' // linda
             ]
         ]
-    }
-
-    plusScore(plus){
-        this.score += plus
     }
 }

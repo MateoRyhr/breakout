@@ -249,6 +249,24 @@ export default class Map{
     ui.changeBackgroundColor(randomPalette[0])
   }
 
+  reloadPlayer(){
+    this.blockPlayer = new blockConstructor(
+      this.playerXi,
+      this.playerYi,
+      this.playerWidth,
+      this.playerHeight,
+      data.playerColor
+    )
+
+    this.ball = new ballConstructor(
+      this.ballXi,
+      this.ballYi,
+      this.ballWidth,
+      this.ballHeight,
+      data.ballColor
+    )
+  }
+
   drawMap(ctx){
     this.blocks.forEach(block => {
       if(block){

@@ -71,22 +71,22 @@ body{
 
 .menu, .difficulty-menu{
     width: 320px;
+    height: 400px;
     min-height: 400px;
-    max-height: 400px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
 
     background-color: #000000;
+    color: #FFF;
     border: 1px solid black;
 }
 
 .menu_title{
     height: 100%;
-    margin-top: 10%;
+    margin-top: 5%;
     font-size: 6rem;
-    color: #FFF;
     font-weight: bold;
     letter-spacing: 0.5rem;
 
@@ -101,28 +101,43 @@ body{
         #e23e57 0px 0px 75px;
 }
 
-.menu_play{
-    margin-bottom: 50%;
-    font-size: 6rem;
+.menu_play, .menu_select-level{
+    margin-bottom: 20%;
+    font-size: 4.5rem;
     padding: 12px 30px;
-    background-color: #e23e57;
+    /*background-color: #e23e57;*/
     border-radius: 8px;
-    border: 1px solid white;
-    color: white;
+    border: 1px solid #e23e57;
+
+    text-shadow:
+        #FFF 0px 0px 5px,
+        #e23e57 0px 0px 20px,
+        #e23e57 0px 0px 30px,
+        #e23e57 0px 0px 40px;
 
     -webkit-box-shadow: 0px 0px 8px 1px rgba(226,62,87,1);
     -moz-box-shadow: 0px 0px 8px 1px rgba(226,62,87,1);
     box-shadow: 0px 0px 8px 1px rgba(226,62,87,1);
 }
 
-.menu_play:hover{
+.menu_play:hover, .menu_select-level:hover{
     font-weight: bold;
     cursor:pointer;
 }
 
-.menu_play:active{
-    font-weight:400;
-    background-color: #88304e;
+.menu_play:active, .menu_select-level:active{
+    font-weight:lighter;
+    text-shadow:
+    #FFF 0px 0px 5px,
+    #e23e57 0px 0px 20px,
+    #e23e57 0px 0px 30px,
+    #e23e57 0px 0px 40px,
+    #e23e57 0px 0px 50px,
+    #e23e57 0px 0px 75px,
+    #e23e57 0px 0px 100px,
+    #e23e57 0px 0px 150px,
+    #e23e57 0px 0px 300px,
+    #e23e57 0px 0px 500px;
 }
 
 .footer{
@@ -148,6 +163,101 @@ body{
 
 .footer_music-license a{
     color: #b3b3b3;
+}
+
+.menu-levels{
+    width: 320px;
+    height: 400px;
+    min-height: 400px;
+    /* padding-top: 5%; */
+    display: none;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+    overflow-y: scroll;
+
+    background-color: #000000;
+    color: black;
+    font-size: 2.5rem;
+    border: 1px solid black;
+}
+
+.menu-levels::-webkit-scrollbar {
+    width: 8px;
+    background-color: white;
+}
+
+.menu-levels::-webkit-scrollbar-thumb {
+    background-color: #e23e57;
+    outline: 2px solid black;
+}
+
+.menu-levels_level{
+    width: 40%;
+    height: 35%;
+
+    margin-bottom: 10%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 2px solid #e23e57;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 8px 1px rgba(226,62,87,1);
+    -moz-box-shadow: 0px 0px 8px 1px rgba(226,62,87,1);
+    box-shadow: 0px 0px 8px 1px rgba(226,62,87,1);
+
+    background-size: cover;
+    background-position: center;
+}
+
+.menu-levels_level:hover{
+    color: #ff2800;
+    font-size: 3rem;
+    font-weight: bold;
+    -webkit-box-shadow: 0px 0px 25px 1px rgba(226,62,87,1);
+    -moz-box-shadow: 0px 0px 25px 1px rgba(226,62,87,1);
+    box-shadow: 0px 0px 25px 1px rgba(226,62,87,1);
+}
+
+.menu-levels_level:active{
+    font-size: 2rem;
+    -webkit-box-shadow: 0px 0px 8px 1px rgba(226,62,87,1);
+    -moz-box-shadow: 0px 0px 8px 1px rgba(226,62,87,1);
+    box-shadow: 0px 0px 8px 1px rgba(226,62,87,1);
+}
+
+#lvl1{
+    background-image: url(../../assets/images/lvl1.png);
+}
+
+#lvl2{
+    background-image: url(../../assets/images/lvl2.png);
+}
+#lvl3{
+    background-image: url(../../assets/images/lvl3.png);
+}
+#lvl4{
+    background-image: url(../../assets/images/lvl4.png);
+}
+#lvl5{
+    background-image: url(../../assets/images/lvl5.png);
+}
+#lvl6{
+    background-image: url(../../assets/images/lvl6.png);
+}
+#lvl7{
+    background-image: url(../../assets/images/lvl7.png);
+}
+#lvl8{
+    background-image: url(../../assets/images/lvl8.png);
+}
+#lvl9{
+    background-image: url(../../assets/images/lvl9.png);
+}
+#lvl10{
+    background-image: url(../../assets/images/lvl10.png);
 }
 
 .difficulty-menu{
@@ -294,7 +404,7 @@ body{
 }
 
 @media only screen and (min-width: 992px){
-    .menu, .difficulty-menu{
+    .menu, .difficulty-menu, .menu-levels{
         width: calc(580px * 0.8);
         height: 500px;
         min-height: 500px;
@@ -308,7 +418,7 @@ body{
 }
 
 @media only screen and (min-width: 1440px){
-    .menu, .difficulty-menu{
+    .menu, .difficulty-menu, .menu-levels{
         width: calc(760px * 0.8);
         height: 680px;
         min-height: 680px;
@@ -319,10 +429,13 @@ body{
 }
 
 @media only screen and (min-width: 1920px){
-    .menu, .difficulty-menu{
+    .menu, .difficulty-menu, .menu-levels{
         width: calc(900px * 0.8);
         height: 860px;
         min-height: 860px;
+    }
+    .menu_play, .menu_select-level{
+        margin-bottom: 30%;
     }
     .playMenu-settings, .footer{
         width: calc(900px * 0.8);

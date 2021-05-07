@@ -183,9 +183,9 @@ export default class Map{
     this.ballXi = ui.gameWidth / 2
     this.ballYi = ui.gameHeight - this.playerHeight - this.ballHeight/2
 
-    this.rightWall = new blockConstructor(ui.gameWidth, 0, 0, ui.gameHeight, '');
-    this.upWall = new blockConstructor(0, 0, ui.gameWidth, 0, '');
-    this.leftWall = new blockConstructor(0, 0, 0, ui.gameHeight, '');
+    this.rightWall = new blockConstructor(ui.gameWidth, 0, 100, ui.gameHeight, '');
+    this.upWall = new blockConstructor(0, -100, ui.gameWidth, 100, '');
+    this.leftWall = new blockConstructor(-100, 0, 100, ui.gameHeight, '');
   }
 
   // la funcion crear nivel recibe una matriz que representa la posicion de los bloques

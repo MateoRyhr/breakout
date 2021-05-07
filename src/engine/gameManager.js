@@ -150,7 +150,10 @@ class GameManager{
 
     update(){
         // si el jugador no colisionara con las paredes se efectua el movimiento
-        if(this.map.blockPlayer.setNewPos([this.map.leftWall,this.map.rightWall])){
+        if(this.map.blockPlayer.setNewPos([
+            new Objects.Block(-100,0,90,this.ui.gameHeight,''),
+            new Objects.Block(this.ui.gameWidth+10,0,90,this.ui.gameHeight,'')
+        ])){
             //si la pelota no fue lanzada se mueve junto a la barra
             if(!this.map.ball.launched){
                 this.map.ball.setNewPos([])

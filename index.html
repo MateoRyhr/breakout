@@ -2,8 +2,10 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Breakout</title> 
+    <title>Breakout game online</title> 
+    <meta name="description" content="Play Breakout game now. The best Breakout game is here, you can select up to 10 levels and select the difficulty. Get the highest score now.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Mateo Ryhr">
     <link rel="canonical" href="https://playbreakoutgame.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="icon" href="./assets/icons/breakout.png">
@@ -11,6 +13,31 @@
     <link rel="stylesheet" href="./src/styles/reset.css">
     <link rel="stylesheet" href="./src/styles/breakout.css">
     <script defer type='module' src="./src/engine/gameManager.js"></script>
+    <script defer type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": "Breakout",
+        "playMode": "SinglePlayer",
+        "url": "https://playbreakoutgame.com",
+        "image": "/assets/images/gameScreenshot.png",
+        "description": "Classic Breakout game online. The best Breakout game is here, you can select up to 10 levels and select the difficulty. Get the highest score now.",
+        "inLanguage":["English"],
+        "author": {
+          "@type": "Person",
+          "name": "Mateo Ryhr"
+          "url": "https://www.linkedin.com/in/mateo-ryhr-635a13206/"
+        },
+        "publisher": {
+          "@type": "Person",
+          "name": "Mateo Ryhr"
+        },
+        "genre": ["Arcade","2D","SinglePlayer"],
+        "gamePlatform": ["PC game", "Mobile game"],
+        "numberOfPlayers": "1",
+        "applicationCategory": "Game"
+      }
+    </script>
   </head>
   <body>
     <section class="playMenu-settings">
@@ -26,6 +53,13 @@
       <h2 class="menu_select-level" id="selectLevel">Select level</h2>
     </section>
 
+    <section id="difficultyMenu" class="difficulty-menu">
+      <h3 id="veryEasyButton" class="difficulty-menu_button">Very easy</h3>
+      <h3 id="easyButton" class="difficulty-menu_button">Easy</h3>
+      <h3 id="normalButton" class="difficulty-menu_button">Normal</h3>
+      <h3 id="hardButton" class="difficulty-menu_button">Hard</h3>
+    </section>
+
     <section id="menuLevels" class="menu-levels">
       <div id="lvl1" class="menu-levels_level">1</div>
       <div id="lvl2" class="menu-levels_level">2</div>
@@ -39,42 +73,35 @@
       <div id="lvl10" class="menu-levels_level">10</div>
     </section>
 
-    <section id="difficultyMenu" class="difficulty-menu">
-      <h2 id="veryEasyButton" class="difficulty-menu_button">Very easy</h2>
-      <h2 id="easyButton" class="difficulty-menu_button">Easy</h2>
-      <h2 id="normalButton" class="difficulty-menu_button">Normal</h2>
-      <h2 id="hardButton" class="difficulty-menu_button">Hard</h2>
-    </section>
-
     <canvas class="canvas" id="canvas"></canvas>
 
     <section id='tactilControls' class="playMenu-tactil-controls">
-      <div id="left-arrow" class="playMenu-tactil-controls_button left-arrow"></div>
-      <div id="up-arrow" class="playMenu-tactil-controls_button up-arrow"></div>
-      <div id="right-arrow" class="playMenu-tactil-controls_button right-arrow"></div>
+      <i id="left-arrow" class="playMenu-tactil-controls_button left-arrow"></i>
+      <i id="up-arrow" class="playMenu-tactil-controls_button up-arrow"></i>
+      <i id="right-arrow" class="playMenu-tactil-controls_button right-arrow"></i>
     </section>
 
 
     <section id="submenu" class="submenu">
       <section id="winLevelMenu" class="submenu_next-level">
-        <p class="next-level_title">You win!</p>
-        <p id="winLevelPlayAgain" class="next-level_button">Play again</p>
+        <h3 class="next-level_title">You win!</h3>
+        <h3 id="winLevelPlayAgain" class="next-level_button">Play again</h3>
       </section>
 
       <section id="nextLevelMenu" class="submenu_next-level">
-        <p class="next-level_title">You win!</p>
-        <p id="nextLevelButton" class="next-level_button">Next level</p>
+        <h3 class="next-level_title">You win!</h3>
+        <h3 id="nextLevelButton" class="next-level_button">Next level</h3>
       </section>
   
       <section id="playAgainMenu" class="submenu_play-again">
-        <p class="play-again_title">You lose</p>
-        <p id="playAgainButton" class="play-again_button">Play again</p>
+        <h3 class="play-again_title">You lose</h3>
+        <h3 id="playAgainButton" class="play-again_button">Play again</h3>
       </section>
 
       <section id="gameOverMenu" class="submenu_game-over">
-        <p class="game-over_title">Congratulations!</p>
-        <p class="game-over_text">You won all levels</p>
-        <p id="gameOverButton" class="play-again_button">Play again</p>
+        <h3 class="game-over_title">Congratulations!</h3>
+        <h3 class="game-over_text">You won all levels</h3>
+        <h3 id="gameOverButton" class="play-again_button">Play again</h3>
       </section>
     </section>
 

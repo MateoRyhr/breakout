@@ -2,10 +2,11 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Breakout</title>
+    <title>Breakout</title> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://playbreakoutgame.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="icon" href="./assets/icons/breakout.png">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./src/styles/reset.css">
     <link rel="stylesheet" href="./src/styles/breakout.css">
@@ -13,10 +14,10 @@
   </head>
   <body>
     <section class="playMenu-settings">
-      <div id="musicIcon" class="playMenu-settings_music-icon"></div>
+      <i id="musicIcon" class="playMenu-settings_music-icon"></i>
       <p class="playMenu-settings_scoreText">Score: <span id="score" class="playMenu_score">0</span></p>
       <p class="playMenu-settings_lifesText">Lifes: <span id="lifes" class="playMenu_lifes">0</span></p>
-      <div id="effectsIcon" class="playMenu-settings_sound-icon"></div>
+      <i id="effectsIcon" class="playMenu-settings_sound-icon"></i>
     </section>
 
     <section id="menu" class="menu" style="display: flex;">
@@ -55,7 +56,6 @@
 
 
     <section id="submenu" class="submenu">
-
       <section id="winLevelMenu" class="submenu_next-level">
         <p class="next-level_title">You win!</p>
         <p id="winLevelPlayAgain" class="next-level_button">Play again</p>
